@@ -1,0 +1,11 @@
+{
+  "name": "weloguard-homepage",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing homepage for Welo Guard — AI-powered enterprise security platform",
+  "scripts": {
+    "dev": "npx serve .",
+    "format": "npx prettier --write .",
+    "lint": "npx prettier --check ."
+  }
+}
