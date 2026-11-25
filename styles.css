@@ -6,6 +6,46 @@ body {
   line-height: 1.5;
 }
 
+/* SILLY PIRATE BACKGROUND */
+body::before,
+body::after {
+  position: fixed;
+  left: -5%;
+  width: 110%;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  word-spacing: 1.5rem;
+  opacity: 0.12;
+  white-space: normal;
+  overflow: hidden;
+}
+body::before {
+  content: "\1F3F4\200D\2620\FE0F  \1F99C  \1F9DC\200D\2642\FE0F  \1F34C  \1F419  \1F3F4\200D\2620\FE0F  \1F980  \1F99C  \1F40B  \1F3F4\200D\2620\FE0F  \1F9A9  \1F419  \1F99C  \1F3F4\200D\2620\FE0F  \1F34C  \1F980  \1F9DC\200D\2642\FE0F  \1F99C";
+  top: 8vh;
+  height: 84vh;
+  font-size: 64px;
+  line-height: 1.9;
+  animation: pirate-bob 6s ease-in-out infinite;
+}
+body::after {
+  content: "\1F4A3  \1F3F4\200D\2620\FE0F  \1F99C  \1F4B0  \1F9DC\200D\2642\FE0F  \1F980  \1F3F4\200D\2620\FE0F  \1F419  \1F34C  \1F99C  \1F4A3  \1F3F4\200D\2620\FE0F";
+  top: 20vh;
+  height: 70vh;
+  font-size: 40px;
+  line-height: 2.6;
+  animation: pirate-bob 9s ease-in-out infinite reverse;
+}
+@keyframes pirate-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after { animation: none; }
+}
+
 /* NAV */
 .nav {
   display: flex;
