@@ -12,6 +12,103 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="undead" aria-hidden="true">
+    <div class="undead__fog"></div>
+    <svg class="undead__ship" viewBox="0 0 300 220" fill="currentColor">
+      <path d="M10 150 H290 Q270 195 230 200 H70 Q30 195 10 150Z"/>
+      <rect x="146" y="14" width="6" height="140"/>
+      <path d="M58 40 L140 40 L132 112 L100 104 L88 122 L68 118Z"/>
+      <path d="M160 40 H242 L232 122 L205 108 L190 124 L168 112Z"/>
+      <path d="M152 14 L196 24 L152 34Z"/>
+    </svg>
+    <svg class="pirate pirate--1" viewBox="0 0 140 200"><use href="#zombie"/></svg>
+    <svg class="pirate pirate--2" viewBox="0 0 140 200"><use href="#zombie"/></svg>
+    <svg class="pirate pirate--3" viewBox="0 0 140 200"><use href="#zombie"/></svg>
+    <svg class="pirate pirate--4" viewBox="0 0 140 200"><use href="#zombie"/></svg>
+    <svg class="pirate pirate--5" viewBox="0 0 140 200"><use href="#zombie"/></svg>
+    <div class="undead__vignette"></div>
+  </div>
+
+  <svg class="undead-defs" width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <radialGradient id="skin" cx="50%" cy="40%" r="70%">
+        <stop offset="0" stop-color="#9fae86"/>
+        <stop offset="0.6" stop-color="#6d7d5a"/>
+        <stop offset="1" stop-color="#3f4a35"/>
+      </radialGradient>
+      <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a2a24"/>
+        <stop offset="1" stop-color="#150f0d"/>
+      </linearGradient>
+      <filter id="rough" x="-15%" y="-10%" width="130%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="5" result="d"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="9" result="g"/>
+        <feColorMatrix in="g" type="saturate" values="0" result="gg"/>
+        <feBlend in="d" in2="gg" mode="multiply" result="b"/>
+        <feComposite in="b" in2="d" operator="in"/>
+      </filter>
+
+      <symbol id="zombie" viewBox="-10 0 140 200">
+        <g filter="url(#rough)">
+          <!-- reaching arms -->
+          <path d="M30 102 Q6 106 -2 132 L6 138 Q14 118 34 116Z" fill="url(#skin)"/>
+          <path d="M-2 132 l-7 11 M2 136 l-6 13 M6 138 l-3 13" stroke="#4d5a3c" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M92 102 Q116 98 122 68 L114 64 Q108 86 90 92Z" fill="url(#skin)"/>
+          <path d="M114 64 l-4 -13 M118 64 l0 -15 M122 66 l4 -13" stroke="#4d5a3c" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M20 110 Q30 104 34 116 L24 122Z M88 94 Q100 92 104 100 L92 104Z" fill="#2a1d18"/>
+          <!-- torn coat -->
+          <path d="M26 96 Q60 86 94 96 L102 190 L92 182 L84 200 L74 184 L64 200 L54 184 L44 200 L34 184 L20 192Z" fill="url(#coat)"/>
+          <path d="M58 92 L60 200" stroke="#0c0807" stroke-width="2"/>
+          <path d="M40 96 L50 120 M80 96 L70 120" stroke="#6b5a3a" stroke-width="2"/>
+          <!-- exposed ribs -->
+          <path d="M46 104 Q60 98 74 104 L72 142 Q60 150 48 142Z" fill="#5a2a2a"/>
+          <path d="M50 110 Q60 114 70 110 M49 120 Q60 125 71 120 M49 130 Q60 135 71 130" stroke="#cfc8a8" stroke-width="2.5" fill="none"/>
+          <!-- gore -->
+          <ellipse cx="36" cy="150" rx="9" ry="14" fill="#4a0a0a" opacity="0.65"/>
+          <ellipse cx="86" cy="140" rx="7" ry="11" fill="#4a0a0a" opacity="0.6"/>
+          <path d="M40 160 q-2 12 0 20 M82 150 q2 14 0 24" stroke="#5a0d0d" stroke-width="2.5" opacity="0.7" fill="none"/>
+          <!-- neck -->
+          <path d="M50 82 L52 98 Q60 102 68 98 L70 82Z" fill="#59684a"/>
+          <!-- head -->
+          <g transform="rotate(-8 60 56)">
+            <path d="M30 40 Q22 70 34 92 Q40 80 38 60Z M90 40 Q98 70 86 92 Q80 80 82 60Z" fill="#1c1410"/>
+            <path d="M36 50 Q36 18 60 18 Q84 18 84 50 Q84 70 76 80 L72 92 Q60 98 48 92 L44 80 Q36 70 36 50Z" fill="url(#skin)"/>
+            <!-- bandana -->
+            <path d="M34 42 Q60 20 86 42 L86 30 Q60 8 34 30Z" fill="#7a1616"/>
+            <path d="M84 36 Q100 42 98 58 Q92 50 84 46Z" fill="#6a1212"/>
+            <path d="M36 36 Q60 16 84 36" stroke="#3a0808" stroke-width="2" fill="none"/>
+            <!-- sunken cheeks and decay -->
+            <ellipse cx="43" cy="72" rx="6" ry="11" fill="#2b3724" opacity="0.7"/>
+            <ellipse cx="77" cy="72" rx="6" ry="11" fill="#2b3724" opacity="0.7"/>
+            <path d="M44 38 l8 6 l-4 6 M70 36 l6 8" stroke="#2a1410" stroke-width="2" fill="none"/>
+            <ellipse cx="60" cy="40" rx="9" ry="3" fill="#4a0a0a" opacity="0.55"/>
+            <!-- eyes -->
+            <ellipse cx="49" cy="52" rx="8" ry="9" fill="#120a0a"/>
+            <circle cx="49" cy="53" r="4.5" fill="#d9dbb8"/>
+            <circle cx="50" cy="54" r="1.6" fill="#555"/>
+            <ellipse cx="71" cy="52" rx="8" ry="9" fill="#120a0a"/>
+            <circle cx="71" cy="53" r="4" fill="#c9cba5"/>
+            <circle cx="70" cy="52" r="1.6" fill="#666"/>
+            <!-- eyepatch -->
+            <path d="M62 44 Q72 38 80 48 Q80 62 70 62 Q62 58 62 44Z" fill="#0b0b0e"/>
+            <path d="M36 40 L64 46 M80 52 L86 56" stroke="#0b0b0e" stroke-width="2"/>
+            <!-- missing nose -->
+            <path d="M60 60 l-5 12 h10z" fill="#1a0f0f"/>
+            <path d="M55 72 q5 3 10 0" stroke="#2a1410" stroke-width="2" fill="none"/>
+            <!-- torn cheek showing jaw -->
+            <path d="M38 74 L50 80 L48 92 L40 88Z" fill="#cfc8a8"/>
+            <path d="M40 76 L46 80 M40 82 L46 86" stroke="#7a7358" stroke-width="1.5"/>
+            <!-- mouth -->
+            <path d="M46 82 Q60 92 76 82 L74 92 Q60 100 48 92Z" fill="#1a0808"/>
+            <path d="M48 85 h4 v5 h-4z M54 87 h4 v6 h-4z M62 88 h4 v6 h-4z M68 86 h4 v5 h-4z" fill="#cfc8a2"/>
+            <path d="M58 94 q-2 14 0 24 M68 92 q2 10 0 16" stroke="#5a0808" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
   <nav class="nav">
     <a href="#" class="nav__logo">Welo Guard</a>
     <ul class="nav__links">
