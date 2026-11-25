@@ -359,3 +359,39 @@ body {
   color: #A8B2C3;
   text-decoration: none;
 }
+
+/* UNDEAD PIRATES */
+body > *:not(.undead):not(.undead-defs) { position: relative; z-index: 1; }
+.undead { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.undead__fog {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 108%, rgba(120,170,90,0.28), transparent 60%),
+    radial-gradient(ellipse at 15% 25%, rgba(90,120,110,0.12), transparent 50%),
+    radial-gradient(ellipse at 85% 60%, rgba(120,40,40,0.14), transparent 55%);
+  animation: fog 12s ease-in-out infinite alternate;
+}
+.undead__vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 100%); }
+.undead__ship { position: absolute; right: 6%; bottom: 10%; width: 340px; color: #7fa06a; opacity: 0.08; animation: sail 18s ease-in-out infinite alternate; }
+.pirate {
+  position: absolute; opacity: 0.5;
+  filter: drop-shadow(0 0 16px rgba(110,150,80,0.45)) saturate(0.9);
+  transform: rotate(var(--r, 0deg));
+  animation: shamble 5s ease-in-out infinite, walk 26s ease-in-out infinite alternate;
+}
+.pirate--1 { left: 2%;   bottom: -30px; width: 260px; --r: -3deg; }
+.pirate--2 { right: 3%;  top: 14%;      width: 200px; --r: 5deg;   animation-delay: -2s, -8s;  filter: drop-shadow(0 0 16px rgba(110,150,80,0.45)) hue-rotate(-18deg); }
+.pirate--3 { left: 40%;  top: 50%;      width: 300px; --r: 0deg;   opacity: 0.22; animation-delay: -4s, -3s; }
+.pirate--4 { left: 7%;   top: 10%;      width: 160px; --r: -5deg;  opacity: 0.35; animation-delay: -1s, -14s; filter: drop-shadow(0 0 16px rgba(110,150,80,0.45)) hue-rotate(22deg); }
+.pirate--5 { right: 14%; bottom: -40px; width: 240px; --r: 3deg;   animation-delay: -3s, -20s; }
+@keyframes shamble {
+  0%, 100% { transform: rotate(calc(var(--r) - 2deg)) translateY(0); }
+  25%      { transform: rotate(calc(var(--r) + 1deg)) translateY(-6px); }
+  50%      { transform: rotate(calc(var(--r) + 3deg)) translateY(0); }
+  75%      { transform: rotate(calc(var(--r) - 1deg)) translateY(-6px); }
+}
+@keyframes walk { from { translate: -60px 0; } to { translate: 60px 0; } }
+@keyframes fog { from { opacity: 0.7; transform: scale(1); } to { opacity: 1; transform: scale(1.08); } }
+@keyframes sail { from { transform: translateY(0) rotate(-1deg); } to { transform: translateY(-14px) rotate(1.5deg); } }
+@media (prefers-reduced-motion: reduce) { .pirate, .undead__fog, .undead__ship { animation: none; } }
+@media (max-width: 700px) { .pirate--3, .pirate--5, .undead__ship { display: none; } }
